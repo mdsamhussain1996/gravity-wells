@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>GRAVITY WELLS — Space-Physics Puzzle</title>
+  <meta name="description" content="Gravity Wells: An original Newtonian space-physics puzzle game by Dr. Md Samshad Hussain Ansari. Place gravity bodies and slingshot comets into target portals.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="game-canvas"></canvas>
+
+    <!-- In-Game HUD Overlay -->
+    <div id="hud" class="overlay-hud hidden">
+      <!-- Top Control Bar -->
+      <div id="top-bar">
+        <div class="header-left">
+          <h2 id="level-title">Level 1: Orbital Drift</h2>
+          <div class="stat-badge">Attempts: <span id="stat-attempts">0</span></div>
+        </div>
+
+        <div class="header-center">
+          <div id="speed-controls" class="btn-group-toggle">
+            <button id="btn-speed-1" class="btn-toggle active">1x</button>
+            <button id="btn-speed-2" class="btn-toggle">2x</button>
+            <button id="btn-speed-4" class="btn-toggle">4x</button>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <button id="btn-launch" class="btn btn-action-launch">🚀 Launch</button>
+          <button id="btn-retry" class="btn btn-action">↺ Retry (R)</button>
+          <button id="btn-reset-objects" class="btn btn-action">Reset Objects</button>
+        </div>
+      </div>
+
+      <!-- Status Banner -->
+      <div id="status-banner" class="status-banner hidden"></div>
+
+      <!-- Bottom Inventory Tray -->
+      <div id="inventory-container">
+        <div class="inventory-header">PLACEABLE CELESTIAL BODIES</div>
+        <div id="inventory-tray" class="inventory-tray"></div>
+      </div>
+    </div>
+
+    <!-- Title Screen -->
+    <div id="title-screen" class="overlay-modal">
+      <div class="title-card">
+        <div class="title-logo-container">
+          <h1 class="game-title">GRAVITY WELLS</h1>
+          <p class="tagline">Newtonian Space-Physics Puzzle</p>
+          <p class="author-credits">Made by Dr. Md Samshad Hussain Ansari</p>
+        </div>
+
+        <div class="menu-actions">
+          <button id="btn-start-game" class="btn btn-primary">Start Level 1</button>
+          <button id="btn-open-levels" class="btn btn-secondary">Select Level</button>
+        </div>
+
+        <div class="instructions-card">
+          <p><strong>Controls:</strong> Drag back from the launcher to set angle & power.</p>
+          <p>Place celestial bodies in dotted zones to bend the comet's gravitational trajectory.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Level Select Modal -->
+    <div id="level-select-modal" class="overlay-modal hidden">
+      <div class="modal-card">
+        <h2 class="modal-title">GALAXY 1: FIRST ORBIT</h2>
+        <div id="level-grid" class="level-grid"></div>
+        <div class="modal-actions">
+          <button id="btn-close-levels" class="btn btn-secondary">Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Level Win Modal -->
+    <div id="win-modal" class="overlay-modal hidden">
+      <div class="modal-card win-card">
+        <h2 class="modal-title win-title">PORTAL REACHED!</h2>
+        <p class="modal-subtitle">Trajectory successfully stabilized</p>
+
+        <div class="stars-display">
+          <span id="star-1" class="star-icon">★</span>
+          <span id="star-2" class="star-icon">★</span>
+          <span id="star-3" class="star-icon">★</span>
+        </div>
+
+        <div class="win-stats-grid">
+          <div class="win-stat">
+            <span class="stat-label">Launches Used</span>
+            <span id="win-attempts" class="stat-val">1</span>
+          </div>
+          <div class="win-stat">
+            <span class="stat-label">Bodies Placed</span>
+            <span id="win-placed" class="stat-val">0</span>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button id="btn-next-level" class="btn btn-primary">Next Level</button>
+          <button id="btn-replay-level" class="btn btn-secondary">Replay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
